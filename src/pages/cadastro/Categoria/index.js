@@ -28,7 +28,9 @@ function CadastroCategoria() {
   }
 
   useEffect(() => {
-    const URL_TOP = 'https://cloneflix-alura.herokuapp.com/categorias';
+    const URL_TOP = window.location.hostname.includes('localhost')
+      ? 'http://localhost:3001/categorias'
+      : 'https://cloneflix-alura.herokuapp.com/categorias';
 
     fetch(URL_TOP)
       .then(async (response) => {
