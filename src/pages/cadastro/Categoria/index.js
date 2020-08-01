@@ -37,6 +37,7 @@ function CadastroCategoria() {
           ...resposta,
         ]);
       });
+  }, []);
 
   return (
     <PageDefault>
