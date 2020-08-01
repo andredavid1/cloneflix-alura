@@ -26,6 +26,7 @@ function PageDefault({ children }) {
 }
 
 PageDefault.propTypes = {
+  // eslint-disable-next-line react/forbid-prop-types
   children: PropTypes.array.isRequired,
 };
 
