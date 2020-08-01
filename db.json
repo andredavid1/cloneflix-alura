@@ -11,6 +11,12 @@
       "nome": "Back End",
       "descricao": "Outra categoria bacanudassa",
       "cor": "#ffd1ff"
+    },
+    {
+      "id": 3,
+      "nome": "Frameworks",
+      "descricao": "Testando Heroku",
+      "cor": "#ff9900"
     }
   ]
 }
