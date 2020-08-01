@@ -26,7 +26,7 @@ function PageDefault({ children }) {
 }
 
 PageDefault.propTypes = {
-  children: PropTypes.string.isRequired,
+  children: PropTypes.array.isRequired,
 };
 
 export default PageDefault;
