@@ -1,72 +1,79 @@
-/* eslint-disable linebreak-style */
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import PageDefault from '../../../components/PageDefault';
 import FormField from '../../../components/FormField';
-
-const initialCategoria = {
-  nome: '',
-  descricao: '',
-  cor: '#ffffff',
-};
+import Button from '../../../components/Button';
 
 function CadastroCategoria() {
-  const [categoria, setCategoria] = useState(initialCategoria);
+  const valoresIniciais = {
+    nome: '',
+    descricao: '',
+    cor: '#ffffff',
+  };
   const [categorias, setCategorias] = useState([]);
+  const [values, setValues] = useState(valoresIniciais);
+
+  function setValue(chave, valor) {
+    setValues({
+      ...values,
+      [chave]: valor,
+    });
+  }
+
+  function handleChange(event) {
+    setValue(
+      event.target.getAttribute('name'),
+      event.target.value,
+    );
+  }
 
   return (
     <PageDefault>
       <h1>Cadastro de Categoria</h1>
 
-      <form onSubmit={(event) => {
+      <form onSubmit={function handleSubmit(event) {
         event.preventDefault();
         setCategorias([
           ...categorias,
-          {
-            nome: categoria.nome,
-            descricao: categoria.descricao,
-            cor: categoria.cor,
-          },
+          values,
         ]);
-        setCategoria(initialCategoria);
+        setValues(valoresIniciais);
       }}
       >
 
         <FormField
-          label="Nome da Categoria: "
+          label="Nome da Categoria"
           type="text"
           name="nome"
-          value={categoria.nome}
-          onChange={(event) => { setCategoria({ ...categoria, nome: event.target.value }); }}
+          value={values.nome}
+          onChange={handleChange}
         />
 
         <FormField
-          label="Descrição: "
-          type="text"
+          label="Descrição"
+          type="textarea"
           name="descricao"
-          value={categoria.descricao}
-          onChange={(event) => { setCategoria({ ...categoria, descricao: event.target.value }); }}
+          value={values.descricao}
+          onChange={handleChange}
         />
 
         <FormField
-          label="Cor: "
+          label="Cor"
           type="color"
           name="cor"
-          value={categoria.cor}
-          onChange={(event) => { setCategoria({ ...categoria, cor: event.target.value }); }}
+          value={values.cor}
+          onChange={handleChange}
         />
 
-        <button type="submit">
-          Cadastrar
-        </button>
+        <Button>Cadastrar</Button>
 
       </form>
 
       <ul>
-        {categorias.map((item, index) => (
+        {categorias.map((categoria, index) => (
           // eslint-disable-next-line react/no-array-index-key
-          <li key={`${index}+${item}`}>
-            {`${item.nome}, ${item.descricao}, ${item.cor}`}
+          <li key={`${index}+${categoria}`}>
+            {`${categoria.nome}, ${categoria.descricao}, ${categoria.cor}`}
           </li>
         ))}
       </ul>
