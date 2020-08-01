@@ -11,7 +11,6 @@ const FormFieldWrapper = styled.div`
 
   input[type="color"] {
     padding-left: 56px;
-    width: 10% !important;
     padding-top: 2px !important;
     padding-bottom: 2px !important;
   }
@@ -40,7 +39,8 @@ Label.Text = styled.span`
 const Input = styled.input`
   background: #53585d;
   color: #f5f5f5;
-  width: 50%;
+  display: block;
+  width: 100%;
   height: 57px;
   font-size: 18px;
 
