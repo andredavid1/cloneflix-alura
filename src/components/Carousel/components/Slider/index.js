@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import SlickSlider from 'react-slick';
 import styled from 'styled-components';
 
@@ -38,18 +39,23 @@ export const SliderItem = styled.li`
 `;
 
 const Slider = ({ children }) => (
-    <Container>
-        <SlickSlider{...{
-          dots: false,
-          infinite: true,
-          speed: 300,
-          centerMode: true,
-          variableWidth: true,
-          adaptiveHeight: true,  
-        }}>
-            {children}
-        </SlickSlider>
-    </Container>
-)
+  <Container>
+    <SlickSlider{...{
+      dots: false,
+      infinite: true,
+      speed: 300,
+      centerMode: true,
+      variableWidth: true,
+      adaptiveHeight: true,
+    }}
+    >
+      {children}
+    </SlickSlider>
+  </Container>
+);
+
+Slider.propTypes = {
+  children: PropTypes.string.isRequired,
+};
 
 export default Slider;
